@@ -1,0 +1,304 @@
+/* Vision Design System (React) — components/bundle.css.
+   Assembled from the project's stylesheets (styles.css → tokens/*.css, assets/icons/vision-icons.css).
+   Colors, shadows, spacing, radii, sizes, font families, type styles and the icon @font-face now live in
+   tokens.json (compiled to tokens.css, loaded before this file). What stays here is what the page does not
+   declare: the Google Fonts import, element defaults, typography/motion variables, the icon glyph classes,
+   and the class/attribute-scoped theme blocks (.vision-light, .vision-dark, [data-mode="dark"]) that the
+   bundle and the UI kits switch on. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* ---- typography variables (tailwind.config.js fontSize scale) ---- */
+/* Source: tailwind.config.js fontSize scale. Headings weight 500, paragraphs weight 400. Single family: Inter. */
+:root{
+  --text-h1:22px;--lh-h1:normal;/* @kind other */
+  --text-h2:18px;--lh-h2:normal;/* @kind other */
+  --text-h3:16px;--lh-h3:normal;/* @kind other */
+  --text-h4:14px;--lh-h4:normal;/* @kind other */
+  --text-h5:12px;--lh-h5:130%;/* @kind other */
+  --text-h6:10px;--lh-h6:120%;/* @kind other */
+  --text-p1:18px;--lh-p1:140%;/* @kind other */
+  --text-p2:14px;--lh-p2:140%;/* @kind other */
+  --text-p3:12px;--lh-p3:140%;/* @kind other */
+  --text-p4:10px;--lh-p4:130%;/* @kind other */
+  --text-p5:8px;--lh-p5:120%;/* @kind other */
+  --text-overlay:10px;--lh-overlay:120%;/* @kind other */
+  --text-base:14px;--lh-base:140%;/* @kind other */
+  --weight-regular:400;--weight-medium:500;--weight-semibold:600;
+}
+
+/* ---- motion, opacity, grid (component CSS) ---- */
+/* Shadows from tailwind.config.js boxShadow; motion from component CSS. */
+:root{
+  --ease-standard:ease-in-out;/* @kind other */--duration-standard:300ms;/* @kind other */         /* buttons: transition 300ms ease-in-out */
+  --ease-pop:cubic-bezier(0.16,1,0.3,1);/* @kind other */--duration-pop:400ms;/* @kind other */    /* menus/popovers slide+fade */
+  --ease-collapse:cubic-bezier(0.87,0,0.13,1);/* @kind other */--duration-collapse:300ms;/* @kind other */
+  --ease-progress:cubic-bezier(0.65,0,0.35,1);/* @kind other */--duration-progress:660ms;/* @kind other */
+  --opacity-disabled:0.4;/* @kind other */
+  --grid-columns:12;/* @kind other */ /* from tokens/spacing.css */
+  --overlay:var(--separations-overlay);
+}
+
+/* ---- theme scopes: same values as tokens.json, for an element wrapped in a theme class ---- */
+.vision-light, .vision-light-theme {
+  --card-background: rgba(255, 255, 255, 1);
+  --card-header: rgba(249, 249, 249, 1);
+  --page-light: rgba(255, 255, 255, 1);
+  --page-shaded: rgba(241, 243, 244, 1);
+  --sidebar-base: rgba(10, 25, 54, 1);
+  --primary-base: rgba(27, 104, 250, 1);
+  --primary-medium: rgba(22, 83, 200, 1);
+  --primary-dark: rgba(16, 62, 150, 1);
+  --primary-light: rgba(232, 240, 255, 1);
+  --primary-hover: rgba(27, 105, 250, 0.05);
+  --primary-focus: rgba(27, 105, 250, 0.10);
+  --primary-border: rgba(27, 105, 250, 0.4);
+  --secondary-base: rgba(176, 128, 252, 1);
+  --secondary-medium: rgba(141, 102, 202, 1);
+  --secondary-dark: rgba(106, 77, 151, 1);
+  --secondary-light: rgba(247, 242, 255, 1);
+  --secondary-hover: rgba(176, 129, 252, 0.05);
+  --secondary-focus: rgba(176, 129, 252, 0.10);
+  --secondary-border: rgba(176, 129, 252, 0.4);
+  --slate-base: rgba(116, 130, 149, 1);
+  --slate-medium: rgba(93, 104, 119, 1);
+  --slate-dark: rgba(70, 78, 89, 1);
+  --slate-light: rgba(241, 243, 244, 1);
+  --slate-hover: rgba(116, 130, 149, 0.05);
+  --slate-focus: rgba(116, 130, 149, 0.10);
+  --slate-border: rgba(116, 130, 149, 0.4);
+  --green-base: rgba(20, 174, 92, 1);
+  --green-medium: rgba(12, 146, 75, 1);
+  --green-dark: rgba(7, 109, 55, 1);
+  --green-light: rgba(233, 249, 239, 1);
+  --green-hover: rgba(20, 174, 92, 0.05);
+  --green-focus: rgba(20, 174, 92, 0.10);
+  --green-border: rgba(20, 174, 92, 0.4);
+  --orange-base: rgba(196, 126, 9, 1);
+  --orange-medium: rgba(172, 111, 8, 1);
+  --orange-dark: rgba(147, 95, 7, 1);
+  --orange-light: rgba(254, 245, 231, 1);
+  --orange-hover: rgba(245, 158, 11, 0.05);
+  --orange-focus: rgba(245, 158, 11, 0.10);
+  --orange-border: rgba(245, 158, 11, 0.4);
+  --red-base: rgba(215, 61, 61, 1);
+  --red-medium: rgba(167, 48, 48, 1);
+  --red-dark: rgba(120, 34, 34, 1);
+  --red-light: rgba(253, 236, 236, 1);
+  --red-hover: rgba(240, 67, 67, 0.05);
+  --red-focus: rgba(240, 67, 67, 0.10);
+  --red-border: rgba(240, 67, 67, 0.4);
+  --separations-base: rgba(227, 230, 234, 1);
+  --separations-border: rgba(230, 230, 234, 1);
+  --separations-divider: rgba(0, 0, 0, 0.15);
+  --separations-input: rgba(0, 0, 0, 0.25);
+  --separations-overlay: rgba(0, 0, 0, 0.25);
+  --typography-base: rgba(0, 0, 0, 1);
+  --typography-contrast: rgba(255, 255, 255, 1);
+  --typography-muted: rgba(93, 104, 119, 1);
+  --typography-light: rgba(137, 150, 169, 1);
+  --typography-disabled: rgba(196, 196, 196, 1);
+  --shadow-base: rgba(0, 0, 0, 0.102);
+  --shadow-light: rgba(0, 0, 0, 0.051);
+  /* semantic aliases */
+  --text-body: var(--typography-muted);
+  --text-heading: var(--typography-base);
+  --text-placeholder: var(--typography-light);
+  --surface-page: var(--page-light);
+  --surface-page-shaded: var(--page-shaded);
+  --surface-card: var(--card-background);
+  --surface-card-header: var(--card-header);
+  --surface-viewport: #000;
+  --border-panel: var(--separations-border);
+  --border-input: var(--separations-input);
+  --border-divider: var(--separations-divider);
+  --action-primary: var(--primary-base);
+  --action-primary-hover: var(--primary-medium);
+  --action-primary-active: var(--primary-dark);
+  --status-success: var(--green-base);
+  --status-warning: var(--orange-base);
+  --status-error: var(--red-base);
+  --status-info: var(--primary-base);
+  --status-discover: var(--secondary-base);
+}
+[data-mode="dark"], .vision-dark, .vision-dark-theme {
+  --card-background: rgba(3, 14, 35, 1);
+  --card-header: rgba(10, 26, 54, 1);
+  --page-light: rgba(0, 1, 2, 1);
+  --page-shaded: rgba(0, 1, 4, 1);
+  --sidebar-base: rgba(10, 25, 54, 1);
+  --primary-base: rgba(118, 164, 252, 1);
+  --primary-medium: rgba(91, 131, 206, 1);
+  --primary-dark: rgba(68, 102, 164, 1);
+  --primary-light: rgba(232, 240, 255, 1);
+  --primary-hover: rgba(118, 164, 252, 0.15);
+  --primary-focus: rgba(118, 164, 252, 0.25);
+  --primary-border: rgba(118, 164, 252, 0.50);
+  --secondary-base: rgba(208, 179, 253, 1);
+  --secondary-medium: rgba(184, 141, 252, 1);
+  --secondary-dark: rgba(158, 115, 227, 1);
+  --secondary-light: rgba(247, 242, 255, 1);
+  --secondary-hover: rgba(208, 179, 253, 0.15);
+  --secondary-focus: rgba(208, 179, 253, 0.25);
+  --secondary-border: rgba(208, 179, 253, 0.50);
+  --slate-base: rgba(199, 205, 213, 1);
+  --slate-medium: rgba(172, 180, 191, 1);
+  --slate-dark: rgba(116, 130, 149, 1);
+  --slate-light: rgba(241, 243, 244, 1);
+  --slate-hover: rgba(199, 205, 213, 0.15);
+  --slate-focus: rgba(199, 205, 213, 0.25);
+  --slate-border: rgba(199, 205, 213, 0.50);
+  --green-base: rgba(122, 220, 158, 1);
+  --green-medium: rgba(78, 209, 126, 1);
+  --green-dark: rgba(34, 197, 94, 1);
+  --green-light: rgba(233, 249, 239, 1);
+  --green-hover: rgba(122, 220, 158, 0.15);
+  --green-focus: rgba(122, 220, 158, 0.25);
+  --green-border: rgba(122, 220, 158, 0.50);
+  --orange-base: rgba(249, 197, 109, 1);
+  --orange-medium: rgba(247, 177, 60, 1);
+  --orange-dark: rgba(245, 158, 11, 1);
+  --orange-light: rgba(254, 245, 231, 1);
+  --orange-hover: rgba(249, 197, 109, 0.15);
+  --orange-focus: rgba(249, 197, 109, 0.25);
+  --orange-border: rgba(249, 197, 109, 0.50);
+  --red-base: rgba(241, 87, 87, 1);
+  --red-medium: rgba(239, 68, 68, 1);
+  --red-dark: rgba(191, 54, 54, 1);
+  --red-light: rgba(253, 236, 236, 1);
+  --red-hover: rgba(245, 143, 143, 0.15);
+  --red-focus: rgba(245, 143, 143, 0.25);
+  --red-border: rgba(245, 143, 143, 0.50);
+  --separations-base: rgba(30, 49, 84, 1);
+  --separations-border: rgba(64, 94, 151, 1);
+  --separations-divider: rgba(255, 255, 255, 0.2);
+  --separations-input: rgba(255, 255, 255, 0.35);
+  --separations-overlay: rgba(0, 0, 0, 0.35);
+  --typography-base: rgba(255, 255, 255, 1);
+  --typography-contrast: rgba(3, 10, 25, 1);
+  --typography-muted: rgba(202, 215, 231, 1);
+  --typography-light: rgba(133, 149, 171, 1);
+  --typography-disabled: rgba(78, 86, 101, 1);
+  --shadow-base: rgba(0, 0, 0, 0.10);
+  --shadow-light: rgba(0, 0, 0, 0.50);
+}
+
+/* ---- element defaults (lib/index.css) ---- */
+/* Element defaults mirrored from lib/index.css */
+:root{scrollbar-color:var(--typography-light) var(--slate-hover)}
+body{margin:0;font-family:var(--font-sans);font-size:var(--text-base);line-height:var(--lh-base);font-weight:400;color:var(--typography-base);background:var(--page-light)}
+svg{pointer-events:none}
+a{text-decoration:underline;color:var(--primary-base);cursor:pointer}
+a:hover{text-decoration:none}
+a:active{text-decoration:none;outline:2px solid var(--primary-dark);border-radius:4px}
+a:visited{color:var(--secondary-base)}
+p{margin:0;color:var(--typography-muted);font-size:var(--text-p2);line-height:var(--lh-p2)}
+h1,h2,h3,h4,h5,h6{margin:0;color:var(--typography-base);font-weight:500}
+h1{font-size:var(--text-h1);line-height:var(--lh-h1)}
+h2{font-size:var(--text-h2);line-height:var(--lh-h2)}
+h3{font-size:var(--text-h3);line-height:var(--lh-h3)}
+h4{font-size:var(--text-h4);line-height:var(--lh-h4)}
+h5{font-size:var(--text-h5);line-height:var(--lh-h5)}
+h6{font-size:var(--text-h6);line-height:var(--lh-h6)}
+.text-overlay{font-size:var(--text-overlay);line-height:var(--lh-overlay);font-weight:500;text-shadow:var(--shadow-overlay-text)}
+[class^="icon-"],[class*=" icon-"]{font-size:24px;line-height:1;display:inline-block}
+
+/* ---- Flywheel-Vision-Icons glyph classes (IcoMoon) ---- */
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Flywheel-Vision-Icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pen-edit-compose-New-Chat:before {
+  content: "\ea5b";
+}
+/* ---- glyphs added in the Angular library's font build (vision-master), codepoints from its SVG font ---- */
+.icon-pen-edit-compose-New-Chat:before {
+  content: "\ea5b";
+}
+
+/* ---- fix: ToolbarComboButton overflow chevron ----
+   The ported Popover wraps its trigger in a position:relative span, so the absolutely positioned
+   .fw-toolbar-combo-more chevron was placed beside the 50px button instead of on its edge
+   (the source uses Radix, which adds no wrapper). Let the wrapper cover the combo box and pass
+   pointer events through to the button beneath it; only the chevron and the open list stay clickable. */
+.fw-toolbar-combo > .fw-popover-wrap { position: absolute; inset: 0; display: block; pointer-events: none; }
+.fw-toolbar-combo > .fw-popover-wrap > span { display: contents; }
+.fw-toolbar-combo > .fw-popover-wrap .fw-toolbar-combo-more,
+.fw-toolbar-combo > .fw-popover-wrap .fw-popover { pointer-events: auto; }
+
+/* ---- ToolbarComboButton menu control (Figma Viewer-3.0 · Menu Control, 104472-110998) ----
+   The side trigger is a 10×40 strip centred on the 50px button, not a full-height 10×50 one. At rest the
+   16px chevron sits 2px toward the button; on hover it slides to centre (50ms) over a vertical gradient
+   that peaks at the middle, with a hairline on the button side. A selected (Focused) button uses the
+   denser gradient. Chevron ink: typography-light at rest, typography-base on hover; sidebar-base (fixed navy) on a selected button. */
+.fw-toolbar-combo-more-left, .fw-toolbar-combo-more-right { top: 5px; height: 40px; width: 10px; overflow: visible; }
+.fw-toolbar-combo-more-left .fw-icon, .fw-toolbar-combo-more-right .fw-icon { transition: transform 50ms ease-out; color: var(--typography-light); }
+.fw-toolbar-combo-more-left .fw-icon { transform: translateX(2px); }
+.fw-toolbar-combo-more-right .fw-icon { transform: translateX(-2px); }
+.fw-toolbar-combo-more-left:hover .fw-icon, .fw-toolbar-combo-more-right:hover .fw-icon { transform: translateX(0); color: var(--typography-base); }
+.fw-toolbar-combo-more-left:hover, .fw-toolbar-combo-more-right:hover {
+  background: linear-gradient(180deg, rgba(118,164,252,0) 0%, rgba(118,164,252,0.15) 50%, rgba(118,164,252,0) 100%);
+}
+.fw-toolbar-combo-more-left:hover { border-right: 1px solid rgba(64,94,151,0.05); }
+.fw-toolbar-combo-more-right:hover { border-left: 1px solid rgba(64,94,151,0.05); }
+.fw-toolbar-combo-selected .fw-toolbar-combo-more-left .fw-icon, .fw-toolbar-combo-selected .fw-toolbar-combo-more-right .fw-icon,
+.fw-toolbar-combo-selected .fw-toolbar-combo-more-left:hover .fw-icon, .fw-toolbar-combo-selected .fw-toolbar-combo-more-right:hover .fw-icon { color: var(--sidebar-base); }
+.fw-toolbar-combo-selected .fw-toolbar-combo-more-left:hover, .fw-toolbar-combo-selected .fw-toolbar-combo-more-right:hover {
+  background: linear-gradient(180deg, rgba(91,131,206,0) 0%, rgba(91,131,206,0.8) 51.442%, rgba(91,131,206,0) 100%);
+}
+.fw-toolbar-combo-selected .fw-toolbar-combo-more-left:hover { border-right-color: rgba(30,49,84,0.05); }
+.fw-toolbar-combo-selected .fw-toolbar-combo-more-right:hover { border-left-color: rgba(30,49,84,0.05); }
+
+/* ---- Chip sizing (Figma Vision Design System · Chips, 4964-73403) ----
+   Chip/Outlined is a fixed 24px: 1px border, 4px container padding, 16px icon/avatar/close, text 12px at
+   line-height 1.2 with 6px side padding; the count beside the title is regular weight in typography-light
+   (white at 60% on a filled chip). The port's 140% line-height + 16px min-height made the chip ~23px and the
+   text sit low; compact keeps its 14px inner cap. */
+.fw-chip { height: 24px; }
+.fw-chip .fw-chip-inner { padding: 0 4px; height: 100%; box-sizing: border-box; gap: 0; }
+.fw-chip .fw-chip-inner > .fw-icon:first-child { margin-left: 2px; }
+.fw-chip .fw-chip-text { line-height: 1.2; min-height: 0; margin: 0; padding: 0 6px; }
+.fw-chip .fw-chip-close { margin: 0; }
+.fw-chip-text b { font-weight: 600; }
+.fw-chip-on .fw-chip-text span { color: inherit; opacity: .6; }
+.fw-chip-compact { height: auto; }
+.fw-chip-compact .fw-chip-inner { max-height: 14px; padding: 2px; }
+
+/* ---- Stepper knockout surface (vision-react FwStep `variant`) ----
+   Each step paints a solid patch behind its number and text to hide the connector line that runs behind the row.
+   The patch must match the surface the stepper sits on; `variant` picks it (page-light default, as in the source). */
+.fw-step-bg-page-shaded .fw-step-content, .fw-step-bg-page-shaded .fw-step-deco { background: var(--page-shaded); border-color: var(--page-shaded); }
+.fw-step-bg-card-header .fw-step-content, .fw-step-bg-card-header .fw-step-deco { background: var(--card-header); border-color: var(--card-header); }
+.fw-step-bg-card-background .fw-step-content, .fw-step-bg-card-background .fw-step-deco { background: var(--card-background); border-color: var(--card-background); }
+.fw-step-bg-inherit .fw-step-content, .fw-step-bg-inherit .fw-step-deco { background: transparent; border-color: transparent; }
+
+/* ---- DateInput picker icon ----
+   The native date control draws the browser's own calendar glyph. Hide it (keep it clickable so the picker still
+   opens) and draw the library's calendar-schedule glyph over the same spot in primary-base. */
+.fw-date .fw-input-box { position: relative; }
+.fw-date input[type=date]::-webkit-calendar-picker-indicator,
+.fw-date input[type=datetime-local]::-webkit-calendar-picker-indicator,
+.fw-date input[type=time]::-webkit-calendar-picker-indicator { opacity: 0 !important; width: 22px; height: 22px; margin-left: .5rem; cursor: pointer; }
+.fw-date .fw-input-box::after { content: "\e97d"; font-family: "Flywheel-Vision-Icons"; font-size: 22px; line-height: 1; color: var(--primary-base); position: absolute; right: 8px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.fw-date .fw-input-box:has(input[type=time])::after { content: "\ea32"; }
+.fw-date .fw-input-box:has(input:disabled)::after { color: var(--typography-disabled); }

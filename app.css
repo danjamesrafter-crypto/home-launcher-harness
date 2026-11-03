@@ -1,0 +1,75 @@
+/* Layout only. Colors, type, radii and shadows come from the Vision tokens (vision/tokens.css). */
+html, body { background: var(--page-shaded); }
+body { min-height: 100vh; }
+.hl { min-height: 100vh; background: var(--page-shaded); color: var(--typography-base); }
+.hl-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-height: 50px; padding: 7px 24px; box-sizing: border-box;
+  background: var(--card-background); border-bottom: 1px solid var(--separations-base); }
+.hl-bar .grow { flex: 1 1 auto; display: flex; align-items: center; gap: 12px; min-width: 0; }
+.hl-bar .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.hl-main { max-width: 1372px; margin: 0 auto; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px; }
+.hl-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch; }
+.hl-section-title { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; }
+
+/* Card = Core fw-card measurements (component-map: 16px pad, 8px radius, 1px separations-border). */
+.hl-card { background: var(--card-background); border: 1px solid var(--separations-border); border-radius: 8px; box-sizing: border-box; }
+.hl-panel-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; min-height: 52px;
+  padding: 8px 16px; box-sizing: border-box; background: var(--card-header); border-bottom: 1px solid var(--separations-base); border-radius: 8px 8px 0 0; }
+.hl-panel-head .t { display: flex; align-items: center; gap: 8px; }
+.hl-panel-foot { padding: 12px 16px; border-top: 1px solid var(--separations-base); }
+
+.hl-attn { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; }
+.hl-attn ul { list-style: none; margin: 0; padding: 0; flex: 1; }
+.hl-attn li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 12px 16px; border-top: 1px solid var(--separations-base); }
+.hl-attn li:first-child { border-top: 0; }
+.hl-attn .txt { flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.hl-attn .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+
+.hl-fermi { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; }
+.hl-fermi .body { padding: 16px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.hl-fermi-mark { width: 30px; height: 30px; border-radius: 9999px; border: 1px solid var(--primary-border); display: inline-flex; align-items: center; justify-content: center; }
+.hl-prompt { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 12px; border-radius: 8px;
+  border: 1px solid var(--separations-border); background: var(--card-background); cursor: pointer; font-size: 14px; color: var(--typography-base); transition: all 300ms ease-in-out; }
+.hl-prompt:hover { background: var(--primary-hover); border-color: var(--primary-border); }
+.hl-prompt:focus-visible { outline: 2px solid var(--primary-base); outline-offset: 2px; }
+.hl-ask { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+
+.hl-apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+.hl-app { display: flex; flex-direction: column; gap: 16px; padding: 16px; }
+.hl-app .head { display: flex; align-items: center; gap: 16px; }
+.hl-app .head .tile { width: 48px; height: 48px; flex-shrink: 0; }
+.hl-app .head .tile img { width: 48px; height: 48px; display: block; }
+.hl-app .head .name { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.hl-app .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.hl-app .desc { flex: 1; }
+.hl-app .signal { display: flex; align-items: center; gap: 6px; }
+.hl-app .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.hl-app .actions.one { grid-template-columns: minmax(0, 1fr); }
+.hl-app.off { background: var(--card-header); border-style: dashed; }
+.hl-app.off .tile, .hl-app.off .desc { opacity: .4; }
+
+.hl-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+.hl-link { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 16px; width: 100%;
+  background: var(--card-background); border: 1px solid var(--separations-border); border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; color: var(--typography-base); }
+.hl-link:hover { background: var(--primary-hover); }
+.hl-link:focus-visible { outline: 2px solid var(--primary-base); outline-offset: 2px; }
+.hl-stack { display: flex; flex-direction: column; gap: 12px; }
+
+.hl-diag { padding: 0; }
+.hl-diag pre { margin: 0; padding: 12px 16px; max-height: 320px; overflow: auto; font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--typography-muted); white-space: pre-wrap; word-break: break-all; }
+
+/* Reader Portal: Vision dark theme, full screen. */
+.rp { min-height: 100vh; background: var(--page-light); color: var(--typography-base); }
+.rp-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-height: 50px; padding: 7px 24px; box-sizing: border-box;
+  background: var(--sidebar-base); border-bottom: 1px solid var(--separations-base); }
+.rp-bar .grow { flex: 1 1 auto; display: flex; align-items: center; gap: 12px; min-width: 0; }
+.rp-main { max-width: 1280px; margin: 0 auto; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; }
+.rp-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.rp-kpi { all: unset; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px; padding: 16px; background: var(--card-background);
+  border: 1px solid var(--separations-border); border-radius: 8px; }
+.rp-kpi .n { font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.rp-table { background: var(--card-background); border: 1px solid var(--separations-border); border-radius: 8px; overflow-x: auto; }
+.rp-table .fw-table { min-width: 760px; }
+.rp-mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 640px) { .hl-main, .rp-main { padding: 16px; } .hl-bar, .rp-bar { padding: 7px 16px; } .hl-apps, .hl-links { grid-template-columns: minmax(0, 1fr); } }

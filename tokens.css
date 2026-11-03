@@ -1,0 +1,221 @@
+/* Flywheel Vision tokens, copied from the Vision Design System artifact (tokens/*.css). */
+/* Vision uses Inter (variable, 100–900) loaded from Google Fonts — the source repo ships no local Inter files.
+   The icon glyph font (Flywheel-Vision-Icons) is declared in ../assets/icons/vision-icons.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+:root{--font-sans:'Inter',sans-serif;--font-icons:'Flywheel-Vision-Icons'}
+/* Source of truth: vision-react-main/lib/colors.css. Every hue has 7 steps: base, medium, dark, light, hover(5%), focus(10%), border(40%). */
+:root, .vision-light, .vision-light-theme {
+  --card-background: rgba(255, 255, 255, 1);
+  --card-header: rgba(249, 249, 249, 1);
+  --page-light: rgba(255, 255, 255, 1);
+  --page-shaded: rgba(241, 243, 244, 1);
+  --sidebar-base: rgba(10, 25, 54, 1);
+  --primary-base: rgba(27, 104, 250, 1);
+  --primary-medium: rgba(22, 83, 200, 1);
+  --primary-dark: rgba(16, 62, 150, 1);
+  --primary-light: rgba(232, 240, 255, 1);
+  --primary-hover: rgba(27, 105, 250, 0.05);
+  --primary-focus: rgba(27, 105, 250, 0.10);
+  --primary-border: rgba(27, 105, 250, 0.4);
+  --secondary-base: rgba(176, 128, 252, 1);
+  --secondary-medium: rgba(141, 102, 202, 1);
+  --secondary-dark: rgba(106, 77, 151, 1);
+  --secondary-light: rgba(247, 242, 255, 1);
+  --secondary-hover: rgba(176, 129, 252, 0.05);
+  --secondary-focus: rgba(176, 129, 252, 0.10);
+  --secondary-border: rgba(176, 129, 252, 0.4);
+  --slate-base: rgba(116, 130, 149, 1);
+  --slate-medium: rgba(93, 104, 119, 1);
+  --slate-dark: rgba(70, 78, 89, 1);
+  --slate-light: rgba(241, 243, 244, 1);
+  --slate-hover: rgba(116, 130, 149, 0.05);
+  --slate-focus: rgba(116, 130, 149, 0.10);
+  --slate-border: rgba(116, 130, 149, 0.4);
+  --green-base: rgba(20, 174, 92, 1);
+  --green-medium: rgba(12, 146, 75, 1);
+  --green-dark: rgba(7, 109, 55, 1);
+  --green-light: rgba(233, 249, 239, 1);
+  --green-hover: rgba(20, 174, 92, 0.05);
+  --green-focus: rgba(20, 174, 92, 0.10);
+  --green-border: rgba(20, 174, 92, 0.4);
+  --orange-base: rgba(196, 126, 9, 1);
+  --orange-medium: rgba(172, 111, 8, 1);
+  --orange-dark: rgba(147, 95, 7, 1);
+  --orange-light: rgba(254, 245, 231, 1);
+  --orange-hover: rgba(245, 158, 11, 0.05);
+  --orange-focus: rgba(245, 158, 11, 0.10);
+  --orange-border: rgba(245, 158, 11, 0.4);
+  --red-base: rgba(215, 61, 61, 1);
+  --red-medium: rgba(167, 48, 48, 1);
+  --red-dark: rgba(120, 34, 34, 1);
+  --red-light: rgba(253, 236, 236, 1);
+  --red-hover: rgba(240, 67, 67, 0.05);
+  --red-focus: rgba(240, 67, 67, 0.10);
+  --red-border: rgba(240, 67, 67, 0.4);
+  --separations-base: rgba(227, 230, 234, 1);
+  --separations-border: rgba(230, 230, 234, 1);
+  --separations-divider: rgba(0, 0, 0, 0.15);
+  --separations-input: rgba(0, 0, 0, 0.25);
+  --separations-overlay: rgba(0, 0, 0, 0.25);
+  --typography-base: rgba(0, 0, 0, 1);
+  --typography-contrast: rgba(255, 255, 255, 1);
+  --typography-muted: rgba(93, 104, 119, 1);
+  --typography-light: rgba(137, 150, 169, 1);
+  --typography-disabled: rgba(196, 196, 196, 1);
+  --shadow-base: rgba(0, 0, 0, 0.102);
+  --shadow-light: rgba(0, 0, 0, 0.051);
+  --shadow-medium: rgba(0, 0, 0, 0.078);
+  /* semantic aliases */
+  --text-body: var(--typography-muted);
+  --text-heading: var(--typography-base);
+  --text-placeholder: var(--typography-light);
+  --surface-page: var(--page-light);
+  --surface-page-shaded: var(--page-shaded);
+  --surface-card: var(--card-background);
+  --surface-card-header: var(--card-header);
+  --surface-viewport: #000;
+  --border-panel: var(--separations-border);
+  --border-input: var(--separations-input);
+  --border-divider: var(--separations-divider);
+  --action-primary: var(--primary-base);
+  --action-primary-hover: var(--primary-medium);
+  --action-primary-active: var(--primary-dark);
+  --status-success: var(--green-base);
+  --status-warning: var(--orange-base);
+  --status-error: var(--red-base);
+  --status-info: var(--primary-base);
+  --status-discover: var(--secondary-base);
+}
+[data-mode="dark"], .vision-dark, .vision-dark-theme {
+  --card-background: rgba(3, 14, 35, 1);
+  --card-header: rgba(10, 26, 54, 1);
+  --page-light: rgba(0, 1, 2, 1);
+  --page-shaded: rgba(0, 1, 4, 1);
+  --sidebar-base: rgba(10, 25, 54, 1);
+  --primary-base: rgba(118, 164, 252, 1);
+  --primary-medium: rgba(91, 131, 206, 1);
+  --primary-dark: rgba(68, 102, 164, 1);
+  --primary-light: rgba(232, 240, 255, 1);
+  --primary-hover: rgba(118, 164, 252, 0.15);
+  --primary-focus: rgba(118, 164, 252, 0.25);
+  --primary-border: rgba(118, 164, 252, 0.50);
+  --secondary-base: rgba(208, 179, 253, 1);
+  --secondary-medium: rgba(184, 141, 252, 1);
+  --secondary-dark: rgba(158, 115, 227, 1);
+  --secondary-light: rgba(247, 242, 255, 1);
+  --secondary-hover: rgba(208, 179, 253, 0.15);
+  --secondary-focus: rgba(208, 179, 253, 0.25);
+  --secondary-border: rgba(208, 179, 253, 0.50);
+  --slate-base: rgba(199, 205, 213, 1);
+  --slate-medium: rgba(172, 180, 191, 1);
+  --slate-dark: rgba(116, 130, 149, 1);
+  --slate-light: rgba(241, 243, 244, 1);
+  --slate-hover: rgba(199, 205, 213, 0.15);
+  --slate-focus: rgba(199, 205, 213, 0.25);
+  --slate-border: rgba(199, 205, 213, 0.50);
+  --green-base: rgba(122, 220, 158, 1);
+  --green-medium: rgba(78, 209, 126, 1);
+  --green-dark: rgba(34, 197, 94, 1);
+  --green-light: rgba(233, 249, 239, 1);
+  --green-hover: rgba(122, 220, 158, 0.15);
+  --green-focus: rgba(122, 220, 158, 0.25);
+  --green-border: rgba(122, 220, 158, 0.50);
+  --orange-base: rgba(249, 197, 109, 1);
+  --orange-medium: rgba(247, 177, 60, 1);
+  --orange-dark: rgba(245, 158, 11, 1);
+  --orange-light: rgba(254, 245, 231, 1);
+  --orange-hover: rgba(249, 197, 109, 0.15);
+  --orange-focus: rgba(249, 197, 109, 0.25);
+  --orange-border: rgba(249, 197, 109, 0.50);
+  --red-base: rgba(241, 87, 87, 1);
+  --red-medium: rgba(239, 68, 68, 1);
+  --red-dark: rgba(191, 54, 54, 1);
+  --red-light: rgba(253, 236, 236, 1);
+  --red-hover: rgba(245, 143, 143, 0.15);
+  --red-focus: rgba(245, 143, 143, 0.25);
+  --red-border: rgba(245, 143, 143, 0.50);
+  --separations-base: rgba(30, 49, 84, 1);
+  --separations-border: rgba(64, 94, 151, 1);
+  --separations-divider: rgba(255, 255, 255, 0.2);
+  --separations-input: rgba(255, 255, 255, 0.35);
+  --separations-overlay: rgba(0, 0, 0, 0.35);
+  --typography-base: rgba(255, 255, 255, 1);
+  --typography-contrast: rgba(3, 10, 25, 1);
+  --typography-muted: rgba(202, 215, 231, 1);
+  --typography-light: rgba(133, 149, 171, 1);
+  --typography-disabled: rgba(78, 86, 101, 1);
+  --shadow-base: rgba(0, 0, 0, 0.10);
+  --shadow-light: rgba(0, 0, 0, 0.50);
+  --shadow-medium: rgba(0, 0, 0, 0.08);
+}
+/* Source: tailwind.config.js fontSize scale. Headings weight 500, paragraphs weight 400. Single family: Inter. */
+:root{
+  --text-h1:22px;--lh-h1:normal;/* @kind other */
+  --text-h2:18px;--lh-h2:normal;/* @kind other */
+  --text-h3:16px;--lh-h3:normal;/* @kind other */
+  --text-h4:14px;--lh-h4:normal;/* @kind other */
+  --text-h5:12px;--lh-h5:130%;/* @kind other */
+  --text-h6:10px;--lh-h6:120%;/* @kind other */
+  --text-p1:18px;--lh-p1:140%;/* @kind other */
+  --text-p2:14px;--lh-p2:140%;/* @kind other */
+  --text-p3:12px;--lh-p3:140%;/* @kind other */
+  --text-p4:10px;--lh-p4:130%;/* @kind other */
+  --text-p5:8px;--lh-p5:120%;/* @kind other */
+  --text-overlay:10px;--lh-overlay:120%;/* @kind other */--shadow-overlay-text:0px 1px 2px rgba(0,0,0,0.05);
+  --text-base:14px;--lh-base:140%;/* @kind other */
+  --weight-regular:400;--weight-medium:500;--weight-semibold:600;
+}
+/* Spacing values observed across component CSS (4px base). Radii/heights copied verbatim from components. */
+:root{
+  --space-1:2px;--space-2:4px;--space-3:6px;--space-4:8px;--space-5:12px;--space-6:16px;--space-7:20px;--space-8:24px;--space-9:32px;--space-10:48px;
+  --radius-xs:2px;   /* checkbox */
+  --radius-sm:4px;   /* menu item, tag, progress bar, snackbar */
+  --radius-md:6px;   /* text/number/select inputs */
+  --radius-lg:8px;   /* buttons, cards, popovers, menus, alert panel */
+  --radius-xl:10px;  /* panel layout */
+  --radius-chip:16px;
+  --radius-pill:64px;
+  --radius-full:9999px;
+  --control-h-sm:30px;--control-h-md:36px;--control-h-lg:40px;   /* inputs + icon buttons */
+  --button-h-sm:32px;--button-h-md:36px;--button-h-lg:40px;
+  --toolbar-size:50px;                                            /* toolbar button + rail width */
+  --panel-header-h:52px;--panel-footer-h:66px;
+  --tab-h:45px;
+  --grid-columns:12;/* @kind other */--grid-gap:16px;
+  --dialog-xs:444px;--dialog-sm:600px;--dialog-md:900px;--dialog-lg:1200px;--dialog-xl:1536px;
+}
+/* Shadows from tailwind.config.js boxShadow; motion from component CSS. */
+:root{
+  --shadow-small:0 1px 2px 0 var(--shadow-light);
+  --shadow-medium:0 2px 5px 0 var(--shadow-base);
+  --shadow-large:0 5px 15px 0 var(--shadow-base);
+  --shadow-extra-large:0 8px 25px 0 var(--shadow-base);
+  --shadow-inner:0 2px 4px 0 var(--shadow-medium) inset;
+  --shadow-tag:0.7px 0.5px 0 var(--shadow-base);
+  --shadow-menu:0 5px 15px 0 rgba(0,0,0,0.10);
+  --shadow-thumb:0 2px 5px 0 rgba(0,0,0,0.10);
+  --ease-standard:ease-in-out;/* @kind other */--duration-standard:300ms;/* @kind other */         /* buttons: transition 300ms ease-in-out */
+  --ease-pop:cubic-bezier(0.16,1,0.3,1);/* @kind other */--duration-pop:400ms;/* @kind other */    /* menus/popovers slide+fade */
+  --ease-collapse:cubic-bezier(0.87,0,0.13,1);/* @kind other */--duration-collapse:300ms;/* @kind other */
+  --ease-progress:cubic-bezier(0.65,0,0.35,1);/* @kind other */--duration-progress:660ms;/* @kind other */
+  --opacity-disabled:0.4;/* @kind other */
+  --overlay:var(--separations-overlay);
+}
+/* Element defaults mirrored from lib/index.css */
+:root{scrollbar-color:var(--typography-light) var(--slate-hover)}
+body{margin:0;font-family:var(--font-sans);font-size:var(--text-base);line-height:var(--lh-base);font-weight:400;color:var(--typography-base);background:var(--page-light)}
+svg{pointer-events:none}
+a{text-decoration:underline;color:var(--primary-base);cursor:pointer}
+a:hover{text-decoration:none}
+a:active{text-decoration:none;outline:2px solid var(--primary-dark);border-radius:4px}
+a:visited{color:var(--secondary-base)}
+p{margin:0;color:var(--typography-muted);font-size:var(--text-p2);line-height:var(--lh-p2)}
+h1,h2,h3,h4,h5,h6{margin:0;color:var(--typography-base);font-weight:500}
+h1{font-size:var(--text-h1);line-height:var(--lh-h1)}
+h2{font-size:var(--text-h2);line-height:var(--lh-h2)}
+h3{font-size:var(--text-h3);line-height:var(--lh-h3)}
+h4{font-size:var(--text-h4);line-height:var(--lh-h4)}
+h5{font-size:var(--text-h5);line-height:var(--lh-h5)}
+h6{font-size:var(--text-h6);line-height:var(--lh-h6)}
+.text-overlay{font-size:var(--text-overlay);line-height:var(--lh-overlay);font-weight:500;text-shadow:var(--shadow-overlay-text)}
+[class^="icon-"],[class*=" icon-"]{font-size:24px;line-height:1;display:inline-block}
