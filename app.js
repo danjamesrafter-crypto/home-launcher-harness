@@ -3,7 +3,7 @@
  * Data: Flywheel Extension SDK 0.14.9 apiRequest proxy (no token in the page). #demo = fictional data. */
 (function () {
   'use strict';
-  var VERSION = 'home-launcher-harness/0.1.1';
+  var VERSION = 'home-launcher-harness/0.1.2';
   var R = window.React, h = R.createElement, useState = R.useState, useEffect = R.useEffect, useRef = R.useRef;
   var V = window.FlywheelVisionDesignSystem_6c883d || {};
   var Button = V.Button, IconButton = V.IconButton, Icon = V.Icon, Tag = V.Tag, Typography = V.Typography, AppIcon = V.AppIcon,
@@ -304,6 +304,36 @@
         h(Typography, { variant: 'p3', color: 'muted' }, 'Reads open in the viewer in a new tab. Subject, session and site labels are never requested or shown.')));
   }
 
+  // ------------------------------------------------------------------ Reader Portal = the Reader Shell workspace
+  // Live data: Launch mounts the Reader Shell (reader-shell-harness, same GitHub Pages origin) into this frame and
+  // hands it this page's SDK connection, so it is the same workspace as the standalone harness. Demo data keeps the
+  // simple portal above, because the workspace needs a live connection.
+  var RS_URL = 'https://danjamesrafter-crypto.github.io/reader-shell-harness/reader-shell.js?v=0.7.0';
+  function loadReaderShell() {
+    if (window.ReaderShell) return Promise.resolve();
+    if (loadReaderShell.p) return loadReaderShell.p;
+    loadReaderShell.p = new Promise(function (res, rej) {
+      var s = document.createElement('script'); s.src = RS_URL; s.onload = res;
+      s.onerror = function () { loadReaderShell.p = null; rej(new Error('The reader workspace did not load from ' + RS_URL.split('?')[0] + '.')); };
+      document.head.appendChild(s); note('load ' + RS_URL);
+    });
+    return loadReaderShell.p;
+  }
+  function ReaderShellHost(p) {
+    var ref = useRef(null), _e = useState(null), err = _e[0], setErr = _e[1];
+    useEffect(function () {
+      var inst = null, dead = false;
+      loadReaderShell().then(function () {
+        if (!dead) inst = window.ReaderShell.mount(ref.current, { ext: CONN.ext, origin: CONN.origin, onExit: p.onExit, host: VERSION });
+      }, function (e) { setErr(errMsg(e)); });
+      return function () { dead = true; if (inst) inst.unmount(); };
+    }, []);
+    if (err) return h('div', { className: 'rp vision-dark', 'data-mode': 'dark', style: { display: 'grid', placeItems: 'center', minHeight: '100vh' } },
+      h(ContextLayout, { width: 'medium', icon: 'warning-circle', iconColor: 'orange', title: 'Reader Portal Unavailable', description: err },
+        h(Button, { variant: 'outlined', color: 'slate', startIcon: 'arrow-back', onClick: p.onExit }, 'Exit To Home')));
+    return h('div', { ref: ref });
+  }
+
   // ------------------------------------------------------------------ app
   function App() {
     var _c = useState({ state: 'connecting' }), conn = _c[0], setConn = _c[1];
@@ -387,7 +417,8 @@
 
     var me = user && user.id;
     if (view === 'reader') return h(R.Fragment, null,
-      h(ReaderPortal, { tasks: tasks.list, me: me, userInitials: user ? user.initials : '?', demo: CONN.demo, fs: fs, enterFs: enterFs, onExit: exitPortal }),
+      CONN.demo ? h(ReaderPortal, { tasks: tasks.list, me: me, userInitials: user ? user.initials : '?', demo: CONN.demo, fs: fs, enterFs: enterFs, onExit: exitPortal })
+        : h(ReaderShellHost, { onExit: exitPortal }),
       snack ? h(SnackbarContainer, null, h(Snackbar, { title: snack.title, description: snack.description, severity: snack.severity, showClose: true, onClose: function () { setSnack(null); } })) : null);
 
     var pid = persona || 'admin';
