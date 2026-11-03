@@ -3,7 +3,7 @@
  * Data: Flywheel Extension SDK 0.14.9 apiRequest proxy (no token in the page). #demo = fictional data. */
 (function () {
   'use strict';
-  var VERSION = 'home-launcher-harness/0.1.0';
+  var VERSION = 'home-launcher-harness/0.1.1';
   var R = window.React, h = R.createElement, useState = R.useState, useEffect = R.useEffect, useRef = R.useRef;
   var V = window.FlywheelVisionDesignSystem_6c883d || {};
   var Button = V.Button, IconButton = V.IconButton, Icon = V.Icon, Tag = V.Tag, Typography = V.Typography, AppIcon = V.AppIcon,
@@ -357,14 +357,14 @@
 
     function enterFs() {
       var el = document.documentElement;
-      if (el.requestFullscreen) el.requestFullscreen().catch(function (e) { note('fullscreen refused: ' + errMsg(e)); toast('Full Screen Was Blocked', 'The frame refused full screen. The portal still opens here.', 'warning'); });
+      if (el.requestFullscreen) el.requestFullscreen().catch(function (e) { note('fullscreen refused: ' + errMsg(e)); toast('Opened In The Frame', 'Flywheel\u2019s app frame does not allow full screen yet, so the portal opens here.', 'info'); });
     }
     function exitPortal() {
       if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
-      setView('home');
+      setView('home'); window.scrollTo(0, 0);
     }
     function go(where, it) {
-      if (where === 'reader') { setView('reader'); enterFs(); return; }
+      if (where === 'reader') { setView('reader'); window.scrollTo(0, 0); enterFs(); return; }
       if (where === 'data') {
         if (!CONN.origin) { toast('No Site Origin', 'Data Portal opens at <site>/upload/. Demo mode has no site.', 'warning'); return; }
         openNew(CONN.origin + '/upload/'); return;

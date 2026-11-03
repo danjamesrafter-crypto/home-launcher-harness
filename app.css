@@ -73,3 +73,5 @@ body { min-height: 100vh; }
 
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (max-width: 640px) { .hl-main, .rp-main { padding: 16px; } .hl-bar, .rp-bar { padding: 7px 16px; } .hl-apps, .hl-links { grid-template-columns: minmax(0, 1fr); } }
+/* 0.1.1: keep the bar clear of the Flywheel frame's close button. */
+.hl-bar, .rp-bar { padding-right: 64px; }
