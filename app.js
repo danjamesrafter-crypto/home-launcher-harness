@@ -88,9 +88,10 @@
     if (!window.Flywheel || !Flywheel.initExtension) return Promise.reject(new Error('The Flywheel Extension SDK did not load from cdn.flywheel.io.'));
     return new Promise(function (resolve, reject) {
       var t = setTimeout(function () { reject(new Error('No connection from Flywheel. Open this page from a project’s Launch In menu inside Flywheel, or use demo data.')); }, 8000);
-      Flywheel.initExtension({ scope: 'ReadWrite', validateOrigin: function (o) { return /^https:\/\/[a-z0-9.-]+\.flywheel\.io$/.test(o); } })
+      window.FW_CHROME = window.FW_CHROME || { /* Flywheel dialog chrome: Custom Apps note claude/extension-dialog-sizing-note.md. fullWidth: updateViewport({width:'100vw'}) after connect (undocumented; host passes strings to MatDialogRef.updateSize; never set height). hideHostClose: needs an Extension SDK newer than 0.14.9 (0.14.9 ignores hideCloseButton); when true, pass it, show our own close and drop the gutter. */ fullWidth: true, hideHostClose: false, initOptions: function (o) { if (this.hideHostClose) o.hideCloseButton = true; return o; }, apply: function (ext) { var d = document.documentElement; d.classList.add('fw-embedded'); if (this.hideHostClose) d.classList.add('fw-own-close'); if (this.fullWidth && ext && typeof ext.updateViewport === 'function') { try { ext.updateViewport({ width: '100vw' }); } catch (e) { if (window.console) console.warn('updateViewport failed', e); } } } };
+      Flywheel.initExtension(FW_CHROME.initOptions({ scope: 'ReadWrite', validateOrigin: function (o) { return /^https:\/\/[a-z0-9.-]+\.flywheel\.io$/.test(o); } }))
         .then(function (ext) {
-          clearTimeout(t); CONN.ext = ext; CONN.origin = flywheelOrigin();
+          clearTimeout(t); FW_CHROME.apply(ext); CONN.ext = ext; CONN.origin = flywheelOrigin();
           note('Connected. Origin ' + (CONN.origin || 'unknown') + '. User ' + (ext.user ? ext.user._id : 'unknown') + '. Opened from ' + (ext.container ? ext.container.container_type + ' ' + ext.container._id : 'no container') + '.');
           resolve({ ext: ext });
         }, function (e) { clearTimeout(t); reject(e); });
